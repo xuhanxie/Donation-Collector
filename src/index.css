@@ -1,23 +1,38 @@
-@import "antd/dist/antd.css";
-
-.ant-carousel .slick-prev,
-.ant-carousel .slick-next,
-.ant-carousel .slick-prev:hover,
-.ant-carousel .slick-next:hover {
-  font-size: inherit;
-  color: currentColor;
-}
-
+@import "~antd/dist/antd.css";
+@import "./styles/App.css";
+@import "./styles/Header.css";
+@import "./styles/Footer.css";
+@import "./styles/LoginForm.css";
+@import "./styles/NGOMainPage.css";
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.App {
+  text-align: center;
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.loginForm {
+  /* margin: 5px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  height: calc(100vh - 90px);
+  /* background-image: url("https://lh3.googleusercontent.com/p0TYyHdosvBt8cD5uhJFiqWTKFLVcLbdYmQ5yusLOhkKhDs3lQLjjqBdIhe4sKFLhDsQO6PEibymDUCJ2zN5VQepWdVhr6h8WqlsFia6r0q1g7oj3zS6JBHZhQvt8zfZMyE7EtKwNg=w2400"); */
+  background-color: bisque;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  background-size: cover;
 }
