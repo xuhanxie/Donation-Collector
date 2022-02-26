@@ -27,7 +27,7 @@ import Text from "antd/lib/typography/Text";
 import React from "react";
 //
 // getReservationsByItem
-import { searchCatagory, addToCart, getItems} from "../utils";
+import { searchCatagory, addToCart} from "../utils";
 
 const { TabPane } = Tabs;
 
@@ -244,10 +244,8 @@ export class ItemDetailInfoButton extends React.Component {
 class MyItems extends React.Component {
   state = {
     loading: false,
-    data: [{ id: 1, name: "backend item name"}]
+    data: []
   };
-
-
 
   // componentDidMount() {
   //   this.loadData();
@@ -271,7 +269,6 @@ class MyItems extends React.Component {
       });
     }
   };
-  
 
   render() {
     return (
@@ -288,11 +285,6 @@ class MyItems extends React.Component {
         }}
         dataSource={this.state.data}
         renderItem={(element) => (
-          <div>
-            <Dropdown.Button onClick={handleButtonClick} overlay={menu}>
-              Categories
-            </Dropdown.Button>
-      
           <List.Item>
             <Card
               key={element.id}
@@ -325,31 +317,48 @@ class MyItems extends React.Component {
               }
             </Card>
           </List.Item>
-          </div>
         )}
       />
     );
   }
 }
 
+// function handleButtonClick(e) {
+//   message.info("Click on right button.");
+//   console.log("click right button", e);
+// }
+// 1. 因为item在myitem里渲染，我的思路是在这个class里面再加三个状态，分别是food，cloth，electronic，
+// click的时候通过handleMenuClick function改变相应状态，然后重新渲染对应的item，通过search Category。
+// 具体实现的时候还是各种报错。
+// function handleMenuClick(e) {
+//   if (e.key === "food") {
+    
+//   }
+//   else if (e.key === "clothes") {
+
+//   }
+//   else if (e.key === "electronics") {
+
+//   }
+
+// }
+
 function handleButtonClick(e) {
   message.info("Click on right button.");
   console.log("click right button", e);
 }
-// 1. 因为item在myitem里渲染，我的思路是在这个class里面再加三个状态，分别是food，cloth，electronic，
-// click的时候通过handleMenuClick function改变相应状态，然后重新渲染对应的item，通过search Category。
-// 具体实现的时候还是各种报错。
+
+
 function handleMenuClick(e) {
-  if (e.key == "food") {
-    
+  if (e.key === "food") {
+    MyItems.loadData("food");
   }
-  else if (e.key == "clothes") {
-
+  else if (e.key === "clothes") {
+    MyItems.loadData("clothes");
   }
-  else if (e.key == "electronics") {
-
+  else if (e.key === "electronics") {
+    MyItems.loadData("electronics");
   }
-
 }
 
 const menu = (
@@ -371,11 +380,11 @@ const menu = (
 class NGOMainPage extends React.Component {
   render() {
     return (
-      <Tabs>
+      <Tabs defaultActiveKey="1" destroyInactiveTabPane={true}>
         <TabPane tab="Donation Items" key="1">
-            {/* <Dropdown.Button onClick={handleButtonClick} overlay={menu}>
+            <Dropdown.Button onClick={handleButtonClick} overlay={menu}>
               Categories
-            </Dropdown.Button> */}
+            </Dropdown.Button>
           <MyItems />
         </TabPane>
         <TabPane tab="Cart" key="2"></TabPane>
